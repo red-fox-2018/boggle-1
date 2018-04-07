@@ -11,7 +11,7 @@ class Boggle {
         let abjad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     
         for(let i=0;i<jumlahRow;i++){
-            var penampungArray = []
+            let penampungArray = []
             for(let k=0;k<jumlahCol;k++){
                 penampungArray.push(abjad[Math.ceil(Math.random()*25)])
             }
@@ -51,10 +51,11 @@ class Boggle {
         let tabel = {}
         let result = ""
         for(let i=0;i<matcher.length;i++){
-            for(let l=0;l<matcher[i].length;l++)
-            if(tabel[matcher[i][l]]===undefined){
-                tabel[matcher[i][l]] = 'a';
-                result += matcher[i][l]
+            for(let l=0;l<matcher[i].length;l++){
+                if(tabel[matcher[i][l]]===undefined){
+                    tabel[matcher[i][l]] = 'a';
+                    result += matcher[i][l]
+                }
             }
         }
 
