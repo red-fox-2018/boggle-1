@@ -14,8 +14,11 @@ class boggle {
             for (let j = 0; j < this.letter_list[i].length; j++) {
                 let position = []
                 let count = 0
-                this.checkBox(i, j, word, count, position)
-                if (word[0] + this.checkBox(i, j, word, count, position) == word) {
+                var str = this.checkBox(i, j, word, count, position)
+                if (word[0] + str == word) {
+                    return word + ' is true'
+                }
+                else if (word[0] + this.checkBox(i, j, word, count, position) == word) {
                     return word + ' is true'
                 }
             }
@@ -59,10 +62,10 @@ class boggle {
 }
 
 
-var word = 'pen'
-var word1 = 'sun'
-var word2 = 'apple'
 var chekWord = new boggle()
-console.log(chekWord.solve(word))
-console.log(chekWord.solve(word1))
-console.log(chekWord.solve(word2))
+var fs = require('fs');
+var arr = fs.readFileSync('test-case.txt').toString().split(' ')
+for(let i=0; i<arr.length;i++){
+    console.log(chekWord.solve(arr[i]))
+}
+
