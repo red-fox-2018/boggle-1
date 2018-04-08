@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const log = console.log;
 const fs = require('fs');
 
-class BoggleBoard {
+class Boggle {
   constructor(size) {
     this.dict = words;
     this.size = size;
@@ -189,5 +189,5 @@ class BoggleBoard {
 
 //dictionary words tester
 let words = ['WEST', 'APPLE', 'SIT', 'TRIP', 'TURN', 'HELP', 'DO', 'PORN', 'PET', 'POOR', 'KLEP', 'SUPER', 'TEST', 'SET', 'HULK', 'HI', 'DOPE', 'ROPE', 'ROW', 'OR', 'WORD', 'RET', 'PELT', 'DEEP', 'DOOR', 'HOPE', 'ROSE', 'HORSE', 'TRUE', 'TOP', 'HOST', 'POT', 'DED', 'TROOPER', 'IT', 'WOOD', 'WORSE'];
-let boggle = new BoggleBoard(6);
+let boggle = new Boggle(6);
 boggle.solve();
