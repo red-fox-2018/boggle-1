@@ -82,7 +82,6 @@ class Boggle {
 						currentRowPos=k;
 						currentColPos=m;
 						for (var p=1;p<this.dictionary[i].length;p++) {
-							console
 							if(this.checkHorizontal(currentRowPos,currentColPos,i,p)===true) {
 								if(this.board[currentRowPos][currentColPos-1]===this.dictionary[i][p]){
 									currentColPos--;
