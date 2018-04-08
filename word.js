@@ -1,0 +1,1 @@
+let words = ['WEST', 'APPLE', 'SIT', 'TRIP', 'TURN', 'HELP', 'DO', 'PORN', 'PET', 'POOR', 'KLEP','SUPER', 'TEST', 'SET', 'HULK', 'HI', 'DOPE', 'ROPE', 'ROW', 'OR', 'WORD', 'RET', 'PELT', 'DEEP', 'DOOR', 'HOPE', 'ROSE', 'HORSE', 'TRUE', 'TOP', 'HOST', 'POT', 'DED', 'TROOPER', 'IT', 'WOOD', 'WORSE']

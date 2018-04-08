@@ -1,0 +1,26 @@
+{
+  "name": "boggle-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "boggle.js",
+  "scripts": {
+    "start": "nodemon boggleku.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/red-fox-2018/boggle-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/red-fox-2018/boggle-1/issues"
+  },
+  "homepage": "https://github.com/red-fox-2018/boggle-1#readme",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "cli-table": "^0.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
