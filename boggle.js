@@ -30,9 +30,7 @@ class boggle {
         if (count == word.length - 1) {
             return ''
         }
-
         else if (this.letter_list[row][col].toLowerCase() == word[count]) {
-            debugger
             count++
             position.push([row, col])
             var letter = word[count]
@@ -40,7 +38,11 @@ class boggle {
                 for (let j = col - 1; j <= col + 1; j++) {
                     if (this.letter_list[i] != undefined && this.letter_list[i][j] != undefined) {
                         let check = false
-                        if (this.wordPosition(check, position, i, j)) check = true
+                        for (let p = 0; p < position.length; p++) {
+                            if (i == position[p][0] && j == position[p][1]) {
+                                check = true
+                            }
+                        }
                         if (check == false) {
                             if (this.letter_list[i][j].toLowerCase() == letter) {
                                 return this.letter_list[i][j].toLowerCase() + this.checkBox(i, j, word, count, position)
@@ -51,21 +53,12 @@ class boggle {
             }
         }
     }
-    wordPosition(check, position, i, j) {
-        for (let p = 0; p < position.length; p++) {
-            if (i == position[p][0] && j == position[p][1]) {
-                check = true
-            }
-        }
-        return check
-    }
 }
 
 
 var chekWord = new boggle()
 var fs = require('fs');
 var arr = fs.readFileSync('test-case.txt').toString().split(' ')
-for(let i=0; i<arr.length;i++){
+for (let i = 0; i < arr.length; i++) {
     console.log(chekWord.solve(arr[i]))
 }
-
