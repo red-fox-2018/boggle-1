@@ -4,7 +4,7 @@
   "description": "",
   "main": "boggle.js",
   "scripts": {
-    "start": "nodemon boggle.js"
+    "start": "nodemon boggleku.js"
   },
   "repository": {
     "type": "git",
