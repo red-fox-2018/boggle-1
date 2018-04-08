@@ -75,13 +75,14 @@ class Boggle {
 		var currentColPos=0;
 		var resultWord=[];
 		for(let i=0;i<this.dictionary.length;i++) {
-			var count=0;
 			for(let k=0;k<this.board.length;k++) {
 				for(let m=0;m<this.board[k].length;m++) {
+					var count=0;
 					if(this.dictionary[i][0]===this.board[k][m]){
 						currentRowPos=k;
 						currentColPos=m;
 						for (var p=1;p<this.dictionary[i].length;p++) {
+							console
 							if(this.checkHorizontal(currentRowPos,currentColPos,i,p)===true) {
 								if(this.board[currentRowPos][currentColPos-1]===this.dictionary[i][p]){
 									currentColPos--;
@@ -90,8 +91,7 @@ class Boggle {
 									currentColPos++;
 									count++;
 								}
-							 }
-							if(this.checkVertical(currentRowPos,currentColPos,i,p)===true){
+							 }else if(this.checkVertical(currentRowPos,currentColPos,i,p)===true){
 								if(this.board[currentRowPos-1]!==undefined){
 									if(this.board[currentRowPos-1][currentColPos]===this.dictionary[i][p]) {
 										currentRowPos--;
@@ -104,9 +104,7 @@ class Boggle {
 										count++
 									}
 								}	
-							}
-
-							if(this.checkDiagonal(currentRowPos,currentColPos,i,p)===true) {
+							}else if(this.checkDiagonal(currentRowPos,currentColPos,i,p)===true) {
 								if(this.board[currentRowPos-1]!==undefined && this.board[currentRowPos+1]!==undefined) {
 									if(this.board[currentRowPos-1][currentColPos-1]===this.dictionary[i][p]) {
 										currentRowPos--;
@@ -139,13 +137,13 @@ class Boggle {
 							}	
 									
 						}
+					if(count===this.dictionary[i].length-1) {
+						result+=1;
+						resultWord.push(this.dictionary[i]);
+					}	
 					}
 				}
 			}
-			if(count===this.dictionary[i].length-1) {
-				result+=1;
-				resultWord.push(this.dictionary[i]);
-			}	
 		}
 		if(result<=1) {
 			console.log(result+" word found :"+"\n"+resultWord.join("\n"));	
@@ -160,13 +158,21 @@ class Boggle {
 
 
 var dummy=
-[["D","G","H","I"],
-["K","L","P","S"],
-["Y","E","U","T"],
+[["A","P","H","I"],
+["K","E","E","S"],
+["A","S","U","T"],
 ["C","O","R","N"]]
-var list=["APPLE","SIT","TRIP","TURN","SUPER","ISTN","SUER","YEPS","ISU","CORN"];
+var list=["APPLE","SIT","TRIP","TURN","SUPER","ISTN","SUER","YEPS","ISU","CORN","APES","ASUE","PESO","API"]; //TURN,ISTN,ISU,CORN,APES,ASUE,PESO
 
-// var list=["DLU","GPEK","KER","TURN","APPLE"];
+// var dummy=
+// [["D","G","H","I"],
+// ["K","L","P","S"],
+// ["Y","E","U","T"],
+// ["C","O","R","N"]]
+// var list=["APPLE","SIT","TRIP","TURN","SUPER","ISTN","SUER","YEPS","ISU","CORN"]; //TURN,SUPER,ISTN,SUER,YEPS,ISU,CORN
+
+
+
 var game= new Boggle(dummy,list);
 
 
