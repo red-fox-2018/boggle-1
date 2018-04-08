@@ -22,7 +22,7 @@ class Boogle {
       }
     }
   }
-  checkCoord(x, y) {
+  checker(x, y) {
     let board = this.board
     this.pos = []
 
@@ -39,13 +39,13 @@ class Boogle {
     }
   }
   createObj() {
-    for (let word = 0; word < this.dict.length; word++) { /** Looping per kata dari dictionary */
+    for (let word = 0; word < this.dict.length; word++) {
       this.obj[this.dict[word]] = {}
       let objDict = this.obj[this.dict[word]];
-      for (let k in this.dict[word]) {  /** Looping per huruf dari setiap kata */
+      for (let k in this.dict[word]) {
         this.obj[this.dict[word]][this.dict[word][k]] = {}
         this.obj[this.dict[word]][this.dict[word][k]].pos = []
-        for (let i in this.board) { /** looping untuk mencari posisi dari setiap huruf di setiap kata */
+        for (let i in this.board) {
           for (let j in this.board[i]) {
             if (this.dict[word][k] == this.board[i][j]) {
               this.obj[this.dict[word]][this.dict[word][k]].pos.push([i, j]);
@@ -65,18 +65,16 @@ class Boogle {
     // this.createBoard()
     console.log(this.board)
     this.createObj();
-    for (let i in this.obj) { /**looping setiap keys (kata) di obj */
+    for (let i in this.obj) {
       let arr = [i[0]];
-      for (let p in this.obj[i][i[0]].pos) { /**looping posisi firstLetter  */
-        let firstLetterPos = this.obj[i][i[0]].pos[p]
-        if (firstLetterPos === undefined) continue
-        let index = 0;
-        let x = firstLetterPos[0]
-        let y = firstLetterPos[1];
-        for (let j in this.obj[i]) { /**looping setiap keys (huruf) dari setiap kata */
-
-          this.checkCoord(x, y)
-          console.log
+      for (let j in this.obj[i]) {
+        for (let p in this.obj[i][i[0]].pos) {
+          let firstLetterPos = this.obj[i][i[0]].pos[p]
+          if (firstLetterPos === undefined) continue
+          let index = 0;
+          let x = firstLetterPos[0]
+          let y = firstLetterPos[1];
+          this.checker(x, y)
           let posisi = this.obj[i][j].pos;
           for (let l = 0; l < this.pos.length; l++) {
             if (j == this.pos[l]) {
@@ -89,19 +87,17 @@ class Boogle {
           }
         }
       }
-      if(i === arr.join('')) {
+      if (i === arr.join('')) {
         this.array.push(i)
       }
     }
     let output = ''
-    this.array.forEach(e => output+=e +' ')
-    console.log(`Kata yang ditemukan berjumlah ${this.array.length} yaitu kata ${output}`)
+    this.array.forEach(e => output += e + ', ')
+    console.log(`Kata yang ditemukan berjumlah ${this.array.length} yaitu kata ${output.substring(0, output.length - 2)}`)
   }
 }
 
 var fs = require('fs')
 var file = fs.readFileSync('dictionary.txt').toString().toUpperCase().split("\n")
-// console.log(file)
 let game = new Boogle(file)
-// game.createBoard()
 game.solve()
