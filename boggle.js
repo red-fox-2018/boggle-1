@@ -28,13 +28,29 @@ class Boggle {
             for(let k=0;k<kamus[i].length-1;k++){
                 tmp.push(this.checkword(kamus[i][k]))
             }
-            if(this.checkMatch(kamus[i][0],tmp,kamus[i])==kamus[i]){
-                possible += this.checkMatch(kamus[i][0],tmp,kamus[i]) + " "
+            if(this.checkMatch(kamus[i][0],this.markingWord(tmp),kamus[i])==kamus[i]){
+                possible += this.checkMatch(kamus[i][0],this.markingWord(tmp),kamus[i]) + " "
                 count++
             }
         }
  
         return `Ditemukan ${count} Words : ${possible}`
+    }
+
+    markingWord(mark){
+        let result = []
+        for(let i=0;i<mark.length;i++){
+            let tmp = []
+            let tabel = {}
+            for(let k=0;k<mark[i].length;k++){
+                if(tabel[mark[i][k]]===undefined){
+                    tabel[mark[i][k]] = 'a';
+                    tmp.push(mark[i][k])
+                }
+            }
+            result.push(tmp)
+        }
+        return result
     }
 
     checkMatch(firstWord,string,fullWord){
@@ -48,18 +64,8 @@ class Boggle {
                 }
             }
         }
-        let tabel = {}
-        let result = ""
-        for(let i=0;i<matcher.length;i++){
-            for(let l=0;l<matcher[i].length;l++){
-                if(tabel[matcher[i][l]]===undefined){
-                    tabel[matcher[i][l]] = 'a';
-                    result += matcher[i][l]
-                }
-            }
-        }
 
-        return result
+        return matcher
     }
 
     checkword(word){
@@ -91,9 +97,9 @@ class Boggle {
 // 2 ['Y', 'E', 'U', 'T'];
 // 3 ['H', 'O', 'R', 'N'];
 
-let tabel = [['D', 'R', 'H', 'I'],['K', 'U', 'P', 'S'],['Y', 'E', 'U', 'T'],['H', 'O', 'R', 'N']]
+let tabel = [['A', 'R', 'H', 'I'],['K', 'P', 'P', 'S'],['Y', 'E', 'U', 'T'],['H', 'O', 'R', 'N']]
 let arah = [[1, 0],[1, 1],[0, 1],[-1, 1],[-1, 0],[-1, -1],[0, -1],[1, -1]];
-let kamus = ['TURN', 'APPLE', 'TRIP', 'SIT', 'SUPER','YEPI','HEPI','RUSH','HORE' ,'SIP','HEY','HORN','SORE'];
+let kamus = ['APPLE','TURN', 'TRIP', 'SIT', 'SUPER','YEPI','HEPI','RUSH','HORE' ,'SIP','HEY','HORN','SORE'];
 
 let fs = require('fs');
 let kamus2 = fs.readFileSync('word.txt').toString().split("\n")
